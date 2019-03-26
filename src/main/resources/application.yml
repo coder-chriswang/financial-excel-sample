@@ -1,0 +1,35 @@
+auth-server: https://auth.otp-express.com
+#auth-server: http://localhost:8090
+server:
+  port: 8082
+
+#SSO配置
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      client-id: demo
+      client-secret: demo
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      scope: read, write
+    resource:
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key
+#  ignored: /wangchao*,/wangchao/**
+
+#打印日志配置
+logging:
+  level:
+    org.springframework.security: error
+    cn.com.yto56.authentication.client.config: trace
+
+#资源权限校验配置
+#yto:
+#  permission:
+#    client:
+#      auth-server: ${auth-server}
+#      base-path: /admin/user/**, /admin/role/**
+#      require-flag: false
+#      service-name: admin

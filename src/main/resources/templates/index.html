@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Spring Boot Sample for Yto SSO</title>
+    </head>
+
+    <body>
+        <div>
+            <span>Spring Boot Sample for Yto SSO</span>
+        </div>
+        <div>
+            Spring Config Sample<br/>
+            <br/>
+            <br/>
+            UserInfo is :<br/>
+            <tbody>
+            detail is : <td th:text="${detail}"></td><br/><br/>
+            principle is : <td th:text="${principle}"></td><br/><br/>
+            authority is : <td th:text="${authority}"></td><br/><br/>
+            authServer is : <td th:text="${authServer}"></td><br/><br/>
+            profile interface is : <td th:text="${authServer}+'/api/profile'"></td><br/><br/>
+            </tbody>
+            <a th:href="@{${authServer}+'/api/profile'}" target="_blank">获取登录的用户信息</a>
+        </div>
+    </body>
+</html>
