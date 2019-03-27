@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @desc:Excel生成工具
- * @author：young
- * @time:2018/11/7 17:10
+ * @author 01482445(wangchao)
+ * @version 1.0
+ * @date:2018/11/7 17:10
  **/
 public class ExcelUtils {
 
@@ -79,36 +79,36 @@ public class ExcelUtils {
     }
     
     /**
-	 * 获取excel列名
-	 */
-	public static List<Alias> getAliasListBySwaggerAnnotation(Class clazz) {
-		List<Alias> list = new ArrayList<>();
-		try {
-			if(clazz==null) {
-				return list;
-			}
-			Field[] declaredFields = clazz.getDeclaredFields();
-			for (Field field : declaredFields) {
-				ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);
-				if(apiModelProperty!=null) {
-					String excelFieldName = apiModelProperty.value();
-					String fieldName = field.getName();
-					list.add(new Alias(fieldName, excelFieldName));
-				}
-			}
-			Class superclass = clazz.getSuperclass();
-			if(superclass!=null) {
-				Field[] superDeclaredFields = superclass.getDeclaredFields();
-				for (Field field : superDeclaredFields) {
-					ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);
-					if(apiModelProperty!=null) {
-						String excelFieldName = apiModelProperty.value();
-						String fieldName = field.getName();
-						list.add(new Alias(fieldName, excelFieldName));
-					}
-				}
-			}
-		} catch (Exception e) {}
-		return list;
-	}
+     * 获取excel列名
+     */
+    public static List<Alias> getAliasListBySwaggerAnnotation(Class clazz) {
+        List<Alias> list = new ArrayList<>();
+        try {
+            if(clazz==null) {
+               return list;
+            }
+            Field[] declaredFields = clazz.getDeclaredFields();
+            for (Field field : declaredFields) {
+                ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);
+                if(apiModelProperty!=null) {
+                    String excelFieldName = apiModelProperty.value();
+                    String fieldName = field.getName();
+                    list.add(new Alias(fieldName, excelFieldName));
+                }
+            }
+            Class superclass = clazz.getSuperclass();
+            if(superclass!=null) {
+                Field[] superDeclaredFields = superclass.getDeclaredFields();
+                for (Field field : superDeclaredFields) {
+                    ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);
+                    if(apiModelProperty!=null) {
+                        String excelFieldName = apiModelProperty.value();
+                        String fieldName = field.getName();
+                        list.add(new Alias(fieldName, excelFieldName));
+                    }
+                }
+            }
+        } catch (Exception e) {}
+        return list;
+    }
 }
